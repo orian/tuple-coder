@@ -1,0 +1,431 @@
+ INFO [main] (FlinkPipelineRunner.java:82) - PipelineOptions.filesToStage was not specified. Defaulting to files from the classpath: will stage 157 files. Enable logging at DEBUG level to see which files will be staged.
+ INFO [main] (FlinkPipelineExecutionEnvironment.java:168) - Creating the required Batch Execution Environment.
+ INFO [main] (Tuple2Coder.java:55) - Tuple2Coder(org.apache.beam.sdk.coders.ByteStringCoder, org.apache.beam.sdk.coders.VarLongCoder)
+ INFO [main] (Tuple2Coder.java:55) - Tuple2Coder(org.apache.beam.sdk.coders.ByteStringCoder, org.apache.beam.sdk.coders.VarLongCoder)
+ INFO [main] (FlinkPipelineRunner.java:104) - Executing pipeline using FlinkPipelineRunner.
+ INFO [main] (FlinkPipelineRunner.java:106) - Translating pipeline to Flink program.
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 76b07f29null
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 62656be4dataset [Read(Source)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 6f7923a5Read(Source)
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 74a6f9c1ParDo(DevLocByDeviceDay)
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- babafc2WithKeys
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 31add175AddKeys [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- babafc2WithKeys
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 3f57bcadCoGroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 51549490MakeUnionTable0 [ParDo(ConstructUnionTable)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 71e9ebaeMakeUnionTable1 [ParDo(ConstructUnionTable)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 42530531Flatten.FlattenPCollectionList
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 51fadaffGroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 3daf7722ConstructCoGbkResultFn [ParDo(ConstructCoGbkResult)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 3f57bcadCoGroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 78641d23ParDo(AssignLocation)
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 74589991Write
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   |   enterCompositeTransform- 146dfe6Create.Values
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   |   visitPrimitiveTransform- 1fc32e4fRead(CreateSource)
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   |   leaveCompositeTransform- 146dfe6Create.Values
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 2f67b837AnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   |   enterCompositeTransform- 1869fbd2View.AsSingleton
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   |   visitPrimitiveTransform- 6cce16f4View.CreatePCollectionView
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   |   leaveCompositeTransform- 1869fbd2View.AsSingleton
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 7efaad5aWindow.Into()
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 4ed5eb72AnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   |   enterCompositeTransform- 12f9af83View.AsIterable
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   |   visitPrimitiveTransform- 7e6ef134View.CreatePCollectionView
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   |   leaveCompositeTransform- 12f9af83View.AsIterable
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 1f010bf0AnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 74589991Write
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 76b07f29null
+ INFO [main] (FlinkPipelineRunner.java:110) - Starting execution of Flink program.
+05/26/2016 21:51:34 Job execution switched to status RUNNING.
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 21:51:34 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 21:51:34 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AddKeys)(3/5) switched to RUNNING
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:70) - KeyValue1 in  Mrówka between 2016-04-18T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462320000000000 (2016-05-04)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462406400000000 (2016-05-05)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462492800000000 (2016-05-06)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462579200000000 (2016-05-07)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462665600000000 (2016-05-08)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462752000000000 (2016-05-09)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462838400000000 (2016-05-10)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:86) - generated: 11
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:70) - KeyValue2 in  Investcom between 2016-04-25T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462320000000000 (2016-05-04)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462406400000000 (2016-05-05)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462492800000000 (2016-05-06)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462579200000000 (2016-05-07)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462665600000000 (2016-05-08)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462752000000000 (2016-05-09)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462838400000000 (2016-05-10)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:86) - generated: 11
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:70) - KeyValue3 in  Greco between 2015-12-15T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462320000000000 (2016-05-04)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462406400000000 (2016-05-05)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462492800000000 (2016-05-06)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462579200000000 (2016-05-07)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462665600000000 (2016-05-08)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462752000000000 (2016-05-09)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462838400000000 (2016-05-10)
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to FINISHED
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (3/5)] (ConvertToItem.java:86) - generated: 11
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to FINISHED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to RUNNING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to SCHEDULED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to DEPLOYING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to SCHEDULED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to DEPLOYING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to SCHEDULED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to SCHEDULED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to DEPLOYING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to FINISHED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to FINISHED
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to RUNNING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to RUNNING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to RUNNING
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to FINISHED
+05/26/2016 21:51:34 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to RUNNING
+05/26/2016 21:51:34 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to RUNNING
+05/26/2016 21:51:48 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 21:51:48 MapPartition (MapPartition at AddKeys)(2/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to FINISHED
+05/26/2016 21:51:49 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at AddKeys)(1/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to FINISHED
+05/26/2016 21:51:49 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 21:51:49 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at AddKeys)(5/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at AddKeys)(4/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to FINISHED
+05/26/2016 21:51:49 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to FINISHED
+05/26/2016 21:51:50 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 21:51:50 MapPartition (MapPartition at AddKeys)(3/5) switched to FINISHED
+05/26/2016 21:51:50 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to FINISHED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to SCHEDULED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to SCHEDULED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to SCHEDULED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to DEPLOYING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to DEPLOYING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to DEPLOYING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to SCHEDULED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to DEPLOYING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to SCHEDULED
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to DEPLOYING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to RUNNING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to RUNNING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to RUNNING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to RUNNING
+05/26/2016 21:52:01 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to RUNNING
+05/26/2016 21:52:09 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to FINISHED
+05/26/2016 21:52:12 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to FINISHED
+05/26/2016 21:52:14 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to FINISHED
+05/26/2016 21:52:20 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to FINISHED
+05/26/2016 21:52:23 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to FINISHED
+05/26/2016 21:52:24 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to SCHEDULED
+05/26/2016 21:52:24 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to DEPLOYING
+05/26/2016 21:52:24 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to RUNNING
+05/26/2016 21:52:24 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to FINISHED
+05/26/2016 21:52:24 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to SCHEDULED
+05/26/2016 21:52:24 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to DEPLOYING
+05/26/2016 21:52:24 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462924800000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462579200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462752000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462320000000000
+05/26/2016 21:52:24 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:144) - 78230 items for KeyValue1 on: 1462924800000000
+05/26/2016 21:52:26 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to FINISHED
+05/26/2016 21:52:26 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to FINISHED
+05/26/2016 21:52:33 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to SCHEDULED
+05/26/2016 21:52:33 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to DEPLOYING
+05/26/2016 21:52:33 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to RUNNING
+05/26/2016 21:52:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to SCHEDULED
+05/26/2016 21:52:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to DEPLOYING
+05/26/2016 21:52:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1463097600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462406400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462492800000000
+05/26/2016 21:52:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to SCHEDULED
+05/26/2016 21:52:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to DEPLOYING
+05/26/2016 21:52:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 52777 items for KeyValue1 on: 1462579200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 47476 items for KeyValue1 on: 1463097600000000
+05/26/2016 21:52:35 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to SCHEDULED
+05/26/2016 21:52:35 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to DEPLOYING
+05/26/2016 21:52:35 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1463011200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462665600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 20146 items for KeyValue1 on: 1462665600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 30728 items for KeyValue1 on: 1463184000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:144) - 25055 items for KeyValue1 on: 1462752000000000
+05/26/2016 21:52:37 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to FINISHED
+05/26/2016 21:52:37 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to FINISHED
+05/26/2016 21:52:37 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to SCHEDULED
+05/26/2016 21:52:37 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to DEPLOYING
+05/26/2016 21:52:37 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to RUNNING
+05/26/2016 21:52:40 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to SCHEDULED
+05/26/2016 21:52:40 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to DEPLOYING
+05/26/2016 21:52:40 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 69198 items for KeyValue1 on: 1462492800000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:144) - 140876 items for KeyValue1 on: 1463011200000000
+05/26/2016 21:52:40 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to FINISHED
+05/26/2016 21:52:40 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 820402 items for KeyValue3 on: 1462492800000000
+05/26/2016 21:52:43 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to FINISHED
+05/26/2016 21:52:43 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:144) - 763170 items for KeyValue3 on: 1462838400000000
+05/26/2016 21:52:43 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to FINISHED
+05/26/2016 21:52:43 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 38167 items for KeyValue1 on: 1462838400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 778453 items for KeyValue3 on: 1462579200000000
+05/26/2016 21:52:47 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 822080 items for KeyValue3 on: 1463097600000000
+05/26/2016 21:52:50 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 68356 items for KeyValue3 on: 1462320000000000
+05/26/2016 21:52:50 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to FINISHED
+05/26/2016 21:52:50 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to FINISHED
+05/26/2016 21:52:57 MapPartition (MapPartition at ConstructCoGbkResultFn)(1/5) switched to SCHEDULED
+05/26/2016 21:52:57 MapPartition (MapPartition at ConstructCoGbkResultFn)(1/5) switched to DEPLOYING
+05/26/2016 21:52:57 MapPartition (MapPartition at ConstructCoGbkResultFn)(1/5) switched to RUNNING
+05/26/2016 21:52:59 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(1/5) switched to SCHEDULED
+05/26/2016 21:52:59 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(1/5) switched to DEPLOYING
+05/26/2016 21:52:59 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(1/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 68643 items for KeyValue3 on: 1462665600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:140) - no items for KeyValue3 on: 1463184000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1462924800000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 753707 items for KeyValue3 on: 1462924800000000 marked as no-loc
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1462752000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 749901 items for KeyValue3 on: 1462752000000000 marked as no-loc
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 754578 items for KeyValue3 on: 1462406400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 751574 items for KeyValue3 on: 1463011200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1462665600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 754758 items for KeyValue3 on: 1462665600000000 marked as no-loc
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1463184000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 694372 items for KeyValue3 on: 1463184000000000 marked as no-loc
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1463184000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462838400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 27206 items for KeyValue1 on: 1462406400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:140) - no items for KeyValue1 on: 1462320000000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 68020 items for KeyValue3 on: 1462924800000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:144) - 65651 items for KeyValue3 on: 1462752000000000
+05/26/2016 21:53:13 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to FINISHED
+05/26/2016 21:53:13 MapPartition (MapPartition at ConstructCoGbkResultFn)(1/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1462406400000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 65392 items for KeyValue3 on: 1462406400000000 marked as no-loc
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:123) - missing for KeyValue3 on: 1463011200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (1/5)] (ConvertToItem.java:142) - 68281 items for KeyValue3 on: 1463011200000000 marked as no-loc
+05/26/2016 21:53:13 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(1/5) switched to FINISHED
+05/26/2016 21:53:13 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(2/5) switched to SCHEDULED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(1/5) switched to SCHEDULED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(1/5) switched to DEPLOYING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(2/5) switched to DEPLOYING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(3/5) switched to SCHEDULED
+05/26/2016 21:53:13 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(3/5) switched to DEPLOYING
+05/26/2016 21:53:13 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to FINISHED
+05/26/2016 21:53:13 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to FINISHED
+05/26/2016 21:53:13 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(5/5) switched to SCHEDULED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(5/5) switched to DEPLOYING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(1/5) switched to RUNNING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(2/5) switched to RUNNING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(3/5) switched to RUNNING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(5/5) switched to RUNNING
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(1/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(2/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(3/5) switched to FINISHED
+05/26/2016 21:53:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(5/5) switched to FINISHED
+05/26/2016 21:53:14 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(4/5) switched to SCHEDULED
+05/26/2016 21:53:14 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(4/5) switched to DEPLOYING
+05/26/2016 21:53:14 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to FINISHED
+05/26/2016 21:53:14 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(4/5) switched to RUNNING
+05/26/2016 21:53:14 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@5dcd8c7a)(4/5) switched to FINISHED
+05/26/2016 21:53:14 Job execution switched to status FINISHED.
+ INFO [main] (FlinkPipelineRunner.java:120) - Execution finished in 100159 msecs
+ INFO [main] (FlinkPipelineRunner.java:124) - Final aggregator values:
+ INFO [main] (FlinkPipelineRunner.java:127) - item count : 8577197
+ INFO [main] (FlinkPipelineRunner.java:127) - missing val1 : 6
+ INFO [main] (FlinkPipelineRunner.java:127) - multiple val1 : 0
+
+Process finished with exit code 0

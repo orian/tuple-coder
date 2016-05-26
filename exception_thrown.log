@@ -1,0 +1,688 @@
+ INFO [main] (FlinkPipelineRunner.java:82) - PipelineOptions.filesToStage was not specified. Defaulting to files from the classpath: will stage 241 files. Enable logging at DEBUG level to see which files will be staged.
+ INFO [main] (FlinkPipelineExecutionEnvironment.java:168) - Creating the required Batch Execution Environment.
+ INFO [main] (FlinkPipelineRunner.java:104) - Executing pipeline using FlinkPipelineRunner.
+ INFO [main] (FlinkPipelineRunner.java:106) - Translating pipeline to Flink program.
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 338c99c8null
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 172b013dataset [Read(Source)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 2dc995f4MapElements
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 2f40e5dbMap [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 2dc995f4MapElements
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 6986bbafRemoveDuplicates
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 4879dfadCreateIndex [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   |   enterCompositeTransform- 4758820dCombine.PerKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:76) - |   |   translated-4758820dCombine.PerKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 4758820dCombine.PerKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 4b6690c0Keys
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 46268f08Keys [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 4b6690c0Keys
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 6986bbafRemoveDuplicates
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 623e088fMapElements
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 39fcbef6Map [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 623e088fMapElements
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - visitPrimitiveTransform- 66565121Read(Source)
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - visitPrimitiveTransform- 2fc6f97fParDo(DevLocByDeviceDay)
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 3d2ee678WithKeys
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 6179e425AddKeys [AnonymousParDo]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 3d2ee678WithKeys
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 35f26e72CoGroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 67304a40MakeUnionTable0 [ParDo(ConstructUnionTable)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 49c6c24fMakeUnionTable1 [ParDo(ConstructUnionTable)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 6fe1b4fbFlatten.FlattenPCollectionList
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 62e20a76GroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 1477089cConstructCoGbkResultFn [ParDo(ConstructCoGbkResult)]
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 35f26e72CoGroupByKey
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - visitPrimitiveTransform- 63dd899ParDo(AssignLocation)
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - enterCompositeTransform- 75cd8043Write
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 33b1c5c5Create.Values
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 10b9db7bRead(CreateSource)
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 33b1c5c5Create.Values
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 9ef8eb7AnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 34cdeda2View.AsSingleton
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 305a0c5fView.CreatePCollectionView
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 34cdeda2View.AsSingleton
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 4535b6d5Window.Into()
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 53142455AnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:70) - |   enterCompositeTransform- 40dff0b7View.AsIterable
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   |   visitPrimitiveTransform- 60975100View.CreatePCollectionView
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - |   leaveCompositeTransform- 40dff0b7View.AsIterable
+ INFO [main] (FlinkBatchPipelineTranslator.java:92) - |   visitPrimitiveTransform- 1253e7cbAnonymousParDo
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 75cd8043Write
+ INFO [main] (FlinkBatchPipelineTranslator.java:87) - leaveCompositeTransform- 338c99c8null
+ INFO [main] (FlinkPipelineRunner.java:110) - Starting execution of Flink program.
+05/26/2016 03:48:47 Job execution switched to status RUNNING.
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to RUNNING
+05/26/2016 03:48:47 DataSource (at Read(Source) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 03:48:47 DataSource (at Read(CreateSource) (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(3/5) switched to FINISHED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(2/5) switched to FINISHED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to DEPLOYING
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:70) - KeyValue1 in  Loc1 between 2016-04-18T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462752000000000 (2016-05-09)
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to FINISHED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(1/5) switched to FINISHED
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462838400000000 (2016-05-10)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue1 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:86) - generated: 6
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:70) - KeyValue2 in  Loc2 between 2016-04-25T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462752000000000 (2016-05-09)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462838400000000 (2016-05-10)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue2 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:86) - generated: 6
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:70) - KeyValue3 in  Loc3 between 2015-12-15T00:00:00Z and 2038-01-18T23:00:00Z
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462752000000000 (2016-05-09)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462838400000000 (2016-05-10)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1462924800000000 (2016-05-11)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463011200000000 (2016-05-12)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463097600000000 (2016-05-13)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:81) - gen for KeyValue3 on: 1463184000000000 (2016-05-14)
+ INFO [MapPartition (MapPartition at ParDo(DevLocByDeviceDay)) (5/5)] (ConvertToItem.java:86) - generated: 6
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(2/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(2/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at AddKeys)(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at Map)(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(4/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(4/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(2/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(1/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to DEPLOYING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(5/5) switched to SCHEDULED
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(5/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to SCHEDULED
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to DEPLOYING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(4/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(3/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to RUNNING
+05/26/2016 03:48:47 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(5/5) switched to RUNNING
+05/26/2016 03:48:47 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to RUNNING
+05/26/2016 03:48:50 MapPartition (MapPartition at MakeUnionTable0)(4/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at MakeUnionTable0)(5/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at MakeUnionTable0)(2/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(4/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at MakeUnionTable0)(3/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at MakeUnionTable0)(1/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at ParDo(DevLocByDeviceDay))(5/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to FINISHED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to SCHEDULED
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to DEPLOYING
+05/26/2016 03:48:50 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to DEPLOYING
+05/26/2016 03:48:51 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 03:48:51 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to RUNNING
+05/26/2016 03:48:52 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to RUNNING
+05/26/2016 03:49:03 MapPartition (MapPartition at MakeUnionTable1)(4/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at Map)(4/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at AddKeys)(4/5) switched to FINISHED
+05/26/2016 03:49:03 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(4/5) switched to FINISHED
+05/26/2016 03:49:03 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(2/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at Map)(2/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at AddKeys)(2/5) switched to FINISHED
+05/26/2016 03:49:03 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(5/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at AddKeys)(5/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at MakeUnionTable1)(2/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at Map)(5/5) switched to FINISHED
+05/26/2016 03:49:03 MapPartition (MapPartition at MakeUnionTable1)(5/5) switched to FINISHED
+05/26/2016 03:49:03 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(3/5) switched to FINISHED
+05/26/2016 03:49:04 MapPartition (MapPartition at Map)(3/5) switched to FINISHED
+05/26/2016 03:49:04 MapPartition (MapPartition at AddKeys)(3/5) switched to FINISHED
+05/26/2016 03:49:04 MapPartition (MapPartition at MakeUnionTable1)(3/5) switched to FINISHED
+05/26/2016 03:49:05 MapPartition (MapPartition at AddKeys)(1/5) switched to FINISHED
+05/26/2016 03:49:05 MapPartition (MapPartition at MakeUnionTable1)(1/5) switched to FINISHED
+05/26/2016 03:49:05 MapPartition (MapPartition at Map)(1/5) switched to FINISHED
+05/26/2016 03:49:05 DataSource (at dataset (org.apache.beam.runners.flink.translation.wrappers.SourceInputFormat))(1/5) switched to FINISHED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(1/5) switched to SCHEDULED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(1/5) switched to DEPLOYING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(2/5) switched to SCHEDULED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(2/5) switched to DEPLOYING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(3/5) switched to SCHEDULED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(3/5) switched to DEPLOYING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(5/5) switched to SCHEDULED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(5/5) switched to DEPLOYING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(4/5) switched to SCHEDULED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(4/5) switched to DEPLOYING
+05/26/2016 03:49:10 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(5/5) switched to FINISHED
+05/26/2016 03:49:10 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(4/5) switched to FINISHED
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(1/5) switched to RUNNING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(5/5) switched to RUNNING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(4/5) switched to RUNNING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(2/5) switched to RUNNING
+05/26/2016 03:49:10 GroupReduce (GroupReduce at Combine.PerKey)(3/5) switched to RUNNING
+05/26/2016 03:49:10 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(2/5) switched to FINISHED
+05/26/2016 03:49:12 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(3/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(5/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(5/5) switched to DEPLOYING
+05/26/2016 03:49:13 CHAIN MapPartition (MapPartition at CreateIndex) -> GroupCombine (GroupCombine at GroupCombine: Combine.PerKey)(1/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(5/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(4/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(3/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(4/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(3/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(1/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(1/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(2/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(2/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(4/5) switched to RUNNING
+05/26/2016 03:49:13 GroupReduce (GroupReduce at Combine.PerKey)(3/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(1/5) switched to RUNNING
+05/26/2016 03:49:13 GroupReduce (GroupReduce at Combine.PerKey)(2/5) switched to FINISHED
+05/26/2016 03:49:13 GroupReduce (GroupReduce at Combine.PerKey)(1/5) switched to FINISHED
+05/26/2016 03:49:13 GroupReduce (GroupReduce at Combine.PerKey)(4/5) switched to FINISHED
+05/26/2016 03:49:13 GroupReduce (GroupReduce at Combine.PerKey)(5/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(1/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(4/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(1/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(1/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(4/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(2/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(2/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(2/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(1/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(2/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(1/5) switched to SCHEDULED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(1/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(1/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(5/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(5/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(5/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(3/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(3/5) switched to SCHEDULED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(3/5) switched to DEPLOYING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(5/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(3/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(4/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Keys)(3/5) switched to FINISHED
+ INFO [MapPartition (MapPartition at Map) (4/5)] (ConvertToItem.java:156) - device: KeyValue1
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(2/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(4/5) switched to RUNNING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(1/5) switched to RUNNING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(1/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(4/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(3/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(4/5) switched to SCHEDULED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(4/5) switched to DEPLOYING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(3/5) switched to SCHEDULED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(3/5) switched to DEPLOYING
+ INFO [MapPartition (MapPartition at Map) (5/5)] (ConvertToItem.java:156) - device: KeyValue3
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(2/5) switched to SCHEDULED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(2/5) switched to DEPLOYING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(5/5) switched to SCHEDULED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(5/5) switched to DEPLOYING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(4/5) switched to RUNNING
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(5/5) switched to FINISHED
+05/26/2016 03:49:13 MapPartition (MapPartition at Map)(2/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(3/5) switched to RUNNING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(2/5) switched to RUNNING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(5/5) switched to RUNNING
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(2/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(5/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(3/5) switched to FINISHED
+05/26/2016 03:49:13 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@2374d36a)(4/5) switched to FINISHED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to SCHEDULED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to SCHEDULED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to SCHEDULED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to SCHEDULED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to DEPLOYING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to DEPLOYING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to DEPLOYING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to SCHEDULED
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to DEPLOYING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to DEPLOYING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to RUNNING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to RUNNING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to RUNNING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to RUNNING
+05/26/2016 03:49:15 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to RUNNING
+05/26/2016 03:49:23 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(4/5) switched to FINISHED
+05/26/2016 03:49:24 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(5/5) switched to FINISHED
+05/26/2016 03:49:29 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(3/5) switched to FINISHED
+05/26/2016 03:49:30 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(2/5) switched to FINISHED
+05/26/2016 03:49:33 CHAIN Filter (UnionFixFilter) -> GroupCombine (GroupCombine at GroupCombine: GroupByKey)(1/5) switched to FINISHED
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to SCHEDULED
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to DEPLOYING
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to RUNNING
+05/26/2016 03:49:34 GroupReduce (GroupReduce at GroupByKey)(2/5) switched to FINISHED
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to SCHEDULED
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to DEPLOYING
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to RUNNING
+05/26/2016 03:49:34 GroupReduce (GroupReduce at GroupByKey)(3/5) switched to FINISHED
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to SCHEDULED
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to DEPLOYING
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to SCHEDULED
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to DEPLOYING
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to RUNNING
+05/26/2016 03:49:34 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1463097600000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462924800000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1462752000000000
+05/26/2016 03:49:34 MapPartition (MapPartition at ConstructCoGbkResultFn)(2/5) switched to FINISHED
+05/26/2016 03:49:35 MapPartition (MapPartition at ConstructCoGbkResultFn)(3/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (2/5)] (ConvertToItem.java:144) - 78230 items for KeyValue1 on: 1462924800000000
+05/26/2016 03:49:37 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(2/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 47476 items for KeyValue1 on: 1463097600000000
+05/26/2016 03:49:37 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (3/5)] (ConvertToItem.java:144) - 30728 items for KeyValue1 on: 1463184000000000
+05/26/2016 03:49:37 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(3/5) switched to FINISHED
+05/26/2016 03:49:37 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to FINISHED
+05/26/2016 03:49:38 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to SCHEDULED
+05/26/2016 03:49:38 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to DEPLOYING
+05/26/2016 03:49:38 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to RUNNING
+05/26/2016 03:49:42 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to SCHEDULED
+05/26/2016 03:49:42 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to DEPLOYING
+05/26/2016 03:49:42 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to RUNNING
+05/26/2016 03:49:42 GroupReduce (GroupReduce at GroupByKey)(5/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 38167 items for KeyValue1 on: 1462838400000000
+05/26/2016 03:49:44 MapPartition (MapPartition at ConstructCoGbkResultFn)(5/5) switched to FINISHED
+05/26/2016 03:49:47 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to SCHEDULED
+05/26/2016 03:49:47 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to DEPLOYING
+05/26/2016 03:49:47 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to RUNNING
+05/26/2016 03:49:47 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to SCHEDULED
+05/26/2016 03:49:47 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to DEPLOYING
+05/26/2016 03:49:47 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to RUNNING
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:140) - no items for KeyValue2 on: 1463011200000000
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (4/5)] (ConvertToItem.java:140) - no items for KeyValue1 on: 1462752000000000
+05/26/2016 03:49:47 GroupReduce (GroupReduce at GroupByKey)(4/5) switched to FINISHED
+ INFO [CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out) (5/5)] (ConvertToItem.java:144) - 822080 items for KeyValue3 on: 1463097600000000
+05/26/2016 03:49:48 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(5/5) switched to FINISHED
+05/26/2016 03:49:48 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to FINISHED
+05/26/2016 03:49:49 GroupReduce (GroupReduce at GroupByKey)(1/5) switched to FAILED
+java.lang.Exception: The data preparation for task 'GroupReduce (GroupReduce at GroupByKey)' , caused an error: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:455)
+  at org.apache.flink.runtime.operators.BatchTask.invoke(BatchTask.java:345)
+  at org.apache.flink.runtime.taskmanager.Task.run(Task.java:559)
+  at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.BatchTask.getInput(BatchTask.java:1079)
+  at org.apache.flink.runtime.operators.GroupReduceDriver.prepare(GroupReduceDriver.java:94)
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:450)
+  ... 3 more
+Caused by: java.io.IOException: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.sort.LargeRecordHandler.finishWriteAndSortKeys(LargeRecordHandler.java:263)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$SpillingThread.go(UnilateralSortMerger.java:1409)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+Caused by: java.io.IOException: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.IllegalAccessError: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.api.java.typeutils.runtime.NoFetchingInput.readBytes(NoFetchingInput.java:122)
+  at com.esotericsoftware.kryo.io.Input.readBytes(Input.java:297)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:35)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:18)
+  at com.esotericsoftware.kryo.Kryo.readObjectOrNull(Kryo.java:706)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer$ObjectField.read(FieldSerializer.java:611)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer.read(FieldSerializer.java:221)
+  at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:732)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:228)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:242)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.runtime.io.disk.InputViewIterator.next(InputViewIterator.java:43)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ReadingThread.go(UnilateralSortMerger.java:973)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+
+05/26/2016 03:49:49 Job execution switched to status FAILING.
+java.lang.Exception: The data preparation for task 'GroupReduce (GroupReduce at GroupByKey)' , caused an error: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:455)
+  at org.apache.flink.runtime.operators.BatchTask.invoke(BatchTask.java:345)
+  at org.apache.flink.runtime.taskmanager.Task.run(Task.java:559)
+  at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.BatchTask.getInput(BatchTask.java:1079)
+  at org.apache.flink.runtime.operators.GroupReduceDriver.prepare(GroupReduceDriver.java:94)
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:450)
+  ... 3 more
+Caused by: java.io.IOException: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.sort.LargeRecordHandler.finishWriteAndSortKeys(LargeRecordHandler.java:263)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$SpillingThread.go(UnilateralSortMerger.java:1409)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+Caused by: java.io.IOException: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.IllegalAccessError: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.api.java.typeutils.runtime.NoFetchingInput.readBytes(NoFetchingInput.java:122)
+  at com.esotericsoftware.kryo.io.Input.readBytes(Input.java:297)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:35)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:18)
+  at com.esotericsoftware.kryo.Kryo.readObjectOrNull(Kryo.java:706)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer$ObjectField.read(FieldSerializer.java:611)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer.read(FieldSerializer.java:221)
+  at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:732)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:228)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:242)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.runtime.io.disk.InputViewIterator.next(InputViewIterator.java:43)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ReadingThread.go(UnilateralSortMerger.java:973)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+05/26/2016 03:49:49 MapPartition (MapPartition at ConstructCoGbkResultFn)(1/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to CANCELING
+05/26/2016 03:49:49 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(1/5) switched to CANCELED
+05/26/2016 03:49:49 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to CANCELING
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to CANCELING
+05/26/2016 03:49:49 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@4c4748bf)(1/5) switched to CANCELED
+05/26/2016 03:49:49 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@4c4748bf)(2/5) switched to CANCELED
+05/26/2016 03:49:49 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@4c4748bf)(3/5) switched to CANCELED
+05/26/2016 03:49:49 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@4c4748bf)(4/5) switched to CANCELED
+05/26/2016 03:49:49 DataSink (org.apache.flink.api.java.io.DiscardingOutputFormat@4c4748bf)(5/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to CANCELED
+05/26/2016 03:49:49 CHAIN MapPartition (MapPartition at ParDo(AssignLocation)) -> FlatMap (Write/Window.Into().out)(4/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(2/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(1/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(3/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(4/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at AnonymousParDo)(5/5) switched to CANCELED
+05/26/2016 03:49:49 MapPartition (MapPartition at ConstructCoGbkResultFn)(4/5) switched to CANCELED
+05/26/2016 03:49:49 Job execution switched to status FAILED.
+ERROR [main] (FlinkPipelineRunner.java:116) - Pipeline execution failed
+org.apache.flink.runtime.client.JobExecutionException: Job execution failed.
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply$mcV$sp(JobManager.scala:714)
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply(JobManager.scala:660)
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply(JobManager.scala:660)
+  at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+  at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+  at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+  at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:397)
+  at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+  at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+  at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+  at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.Exception: The data preparation for task 'GroupReduce (GroupReduce at GroupByKey)' , caused an error: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:455)
+  at org.apache.flink.runtime.operators.BatchTask.invoke(BatchTask.java:345)
+  at org.apache.flink.runtime.taskmanager.Task.run(Task.java:559)
+  at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.BatchTask.getInput(BatchTask.java:1079)
+  at org.apache.flink.runtime.operators.GroupReduceDriver.prepare(GroupReduceDriver.java:94)
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:450)
+  ... 3 more
+Caused by: java.io.IOException: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.sort.LargeRecordHandler.finishWriteAndSortKeys(LargeRecordHandler.java:263)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$SpillingThread.go(UnilateralSortMerger.java:1409)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+Caused by: java.io.IOException: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.IllegalAccessError: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.api.java.typeutils.runtime.NoFetchingInput.readBytes(NoFetchingInput.java:122)
+  at com.esotericsoftware.kryo.io.Input.readBytes(Input.java:297)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:35)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:18)
+  at com.esotericsoftware.kryo.Kryo.readObjectOrNull(Kryo.java:706)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer$ObjectField.read(FieldSerializer.java:611)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer.read(FieldSerializer.java:221)
+  at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:732)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:228)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:242)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.runtime.io.disk.InputViewIterator.next(InputViewIterator.java:43)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ReadingThread.go(UnilateralSortMerger.java:973)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+Exception in thread "main" java.lang.RuntimeException: Pipeline execution failed
+  at org.apache.beam.runners.flink.FlinkPipelineRunner.run(FlinkPipelineRunner.java:117)
+  at org.apache.beam.runners.flink.FlinkPipelineRunner.run(FlinkPipelineRunner.java:49)
+  at org.apache.beam.sdk.Pipeline.run(Pipeline.java:182)
+  at pl.myproject.ConvertToItem.main(ConvertToItem.java:194)
+  at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+  at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+  at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+  at java.lang.reflect.Method.invoke(Method.java:498)
+  at com.intellij.rt.execution.application.AppMain.main(AppMain.java:144)
+Caused by: org.apache.flink.runtime.client.JobExecutionException: Job execution failed.
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply$mcV$sp(JobManager.scala:714)
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply(JobManager.scala:660)
+  at org.apache.flink.runtime.jobmanager.JobManager$$anonfun$handleMessage$1$$anonfun$applyOrElse$7.apply(JobManager.scala:660)
+  at scala.concurrent.impl.Future$PromiseCompletingRunnable.liftedTree1$1(Future.scala:24)
+  at scala.concurrent.impl.Future$PromiseCompletingRunnable.run(Future.scala:24)
+  at akka.dispatch.TaskInvocation.run(AbstractDispatcher.scala:40)
+  at akka.dispatch.ForkJoinExecutorConfigurator$AkkaForkJoinTask.exec(AbstractDispatcher.scala:397)
+  at scala.concurrent.forkjoin.ForkJoinTask.doExec(ForkJoinTask.java:260)
+  at scala.concurrent.forkjoin.ForkJoinPool$WorkQueue.runTask(ForkJoinPool.java:1339)
+  at scala.concurrent.forkjoin.ForkJoinPool.runWorker(ForkJoinPool.java:1979)
+  at scala.concurrent.forkjoin.ForkJoinWorkerThread.run(ForkJoinWorkerThread.java:107)
+Caused by: java.lang.Exception: The data preparation for task 'GroupReduce (GroupReduce at GroupByKey)' , caused an error: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:455)
+  at org.apache.flink.runtime.operators.BatchTask.invoke(BatchTask.java:345)
+  at org.apache.flink.runtime.taskmanager.Task.run(Task.java:559)
+  at java.lang.Thread.run(Thread.java:745)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.BatchTask.getInput(BatchTask.java:1079)
+  at org.apache.flink.runtime.operators.GroupReduceDriver.prepare(GroupReduceDriver.java:94)
+  at org.apache.flink.runtime.operators.BatchTask.run(BatchTask.java:450)
+  ... 3 more
+Caused by: java.io.IOException: Thread 'SortMerger spilling thread' terminated due to an exception: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.RuntimeException: Error obtaining the sorted input: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger.getIterator(UnilateralSortMerger.java:619)
+  at org.apache.flink.runtime.operators.sort.LargeRecordHandler.finishWriteAndSortKeys(LargeRecordHandler.java:263)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$SpillingThread.go(UnilateralSortMerger.java:1409)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+Caused by: java.io.IOException: Thread 'SortMerger Reading Thread' terminated due to an exception: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:799)
+Caused by: java.lang.IllegalAccessError: tried to access field com.esotericsoftware.kryo.io.Input.inputStream from class org.apache.flink.api.java.typeutils.runtime.NoFetchingInput
+  at org.apache.flink.api.java.typeutils.runtime.NoFetchingInput.readBytes(NoFetchingInput.java:122)
+  at com.esotericsoftware.kryo.io.Input.readBytes(Input.java:297)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:35)
+  at com.esotericsoftware.kryo.serializers.DefaultArraySerializers$ByteArraySerializer.read(DefaultArraySerializers.java:18)
+  at com.esotericsoftware.kryo.Kryo.readObjectOrNull(Kryo.java:706)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer$ObjectField.read(FieldSerializer.java:611)
+  at com.esotericsoftware.kryo.serializers.FieldSerializer.read(FieldSerializer.java:221)
+  at com.esotericsoftware.kryo.Kryo.readClassAndObject(Kryo.java:732)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:228)
+  at org.apache.flink.api.java.typeutils.runtime.kryo.KryoSerializer.deserialize(KryoSerializer.java:242)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:144)
+  at org.apache.flink.api.java.typeutils.runtime.TupleSerializer.deserialize(TupleSerializer.java:30)
+  at org.apache.flink.runtime.io.disk.InputViewIterator.next(InputViewIterator.java:43)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ReadingThread.go(UnilateralSortMerger.java:973)
+  at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
+
+Process finished with exit code 1
