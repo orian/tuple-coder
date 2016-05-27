@@ -96,7 +96,7 @@ Caused by: java.lang.IllegalAccessError: tried to access field com.esotericsoftw
   at org.apache.flink.runtime.operators.sort.UnilateralSortMerger$ThreadBase.run(UnilateralSortMerger.java:796)
 ```
 
-### Work-around
+### ~~Work-around~~ (after more testing, doesn't work, staying with Tuple2)
 I've switched from using Tuple2 to a Protocol Buffer message:
 ```
 message KeyDay {
