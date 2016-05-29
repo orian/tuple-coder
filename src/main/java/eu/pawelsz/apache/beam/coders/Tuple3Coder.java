@@ -85,14 +85,13 @@ public class Tuple3Coder<T0, T1, T2> extends StandardCoder<Tuple3<T0, T1, T2>> {
 
     @Override
     public void verifyDeterministic() throws NonDeterministicException {
-        verifyDeterministic("T0 coder must be deterministic", getF0Coder());
-        verifyDeterministic("T1 coder must be deterministic", getF1Coder());
-        verifyDeterministic("T2 coder must be deterministic", getF2Coder());
+        verifyDeterministic("Coders must be deterministic", t0Coder, t1Coder, t2Coder);
     }
 
     @Override
     public boolean consistentWithEquals() {
-        return t0Coder.consistentWithEquals() && t1Coder.consistentWithEquals()
+        return t0Coder.consistentWithEquals()
+            && t1Coder.consistentWithEquals()
             && t2Coder.consistentWithEquals();
     }
 
@@ -101,10 +100,10 @@ public class Tuple3Coder<T0, T1, T2> extends StandardCoder<Tuple3<T0, T1, T2>> {
         if (consistentWithEquals()) {
             return tuple;
         } else {
-            return Tuple3.<T0, T1, T2>of(
-                    (T0) t0Coder.structuralValue(tuple.f0),
-                    (T1) t1Coder.structuralValue(tuple.f1),
-                    (T2) t2Coder.structuralValue(tuple.f2));
+            return Tuple3.of(
+                    t0Coder.structuralValue(tuple.f0),
+                    t1Coder.structuralValue(tuple.f1),
+                    t2Coder.structuralValue(tuple.f2));
         }
     }
 
@@ -122,8 +121,9 @@ public class Tuple3Coder<T0, T1, T2> extends StandardCoder<Tuple3<T0, T1, T2>> {
         if (tuple == null) {
             throw new CoderException("cannot encode a null Tuple3");
         }
-        t0Coder.registerByteSizeObserver(tuple.f0, observer, context.nested());
-        t1Coder.registerByteSizeObserver(tuple.f1, observer, context.nested());
-        t2Coder.registerByteSizeObserver(tuple.f2, observer, context.nested());
+        Context nestedContext = context.nested();
+        t0Coder.registerByteSizeObserver(tuple.f0, observer, nestedContext);
+        t1Coder.registerByteSizeObserver(tuple.f1, observer, nestedContext);
+        t2Coder.registerByteSizeObserver(tuple.f2, observer, nestedContext);
     }
 }

@@ -20,8 +20,6 @@ import java.util.List;
 
 public class Tuple2Coder<T0, T1> extends StandardCoder<Tuple2<T0, T1>> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Tuple2Coder.class);
-
     public static <T0, T1> Tuple2Coder<T0, T1> of(Coder<T0> t0, Coder<T1> t1) {
         return new Tuple2Coder<>(t0, t1);
     }
@@ -51,7 +49,6 @@ public class Tuple2Coder<T0, T1> extends StandardCoder<Tuple2<T0, T1>> {
     private final Coder<T1> t1Coder;
 
     private Tuple2Coder(Coder<T0> t0Coder, Coder<T1> t1Coder) {
-//        LOG.info("Tuple2Coder("+t0Coder.getClass().getName()+", "+t1Coder.getClass().getName()+")");
         this.t0Coder = t0Coder;
         this.t1Coder = t1Coder;
     }
@@ -82,8 +79,7 @@ public class Tuple2Coder<T0, T1> extends StandardCoder<Tuple2<T0, T1>> {
 
     @Override
     public void verifyDeterministic() throws NonDeterministicException {
-        verifyDeterministic("T0 coder must be deterministic", getF0Coder());
-        verifyDeterministic("T1 coder must be deterministic", getF1Coder());
+        verifyDeterministic("Coders must be deterministic", t0Coder, t1Coder);
     }
 
     @Override
