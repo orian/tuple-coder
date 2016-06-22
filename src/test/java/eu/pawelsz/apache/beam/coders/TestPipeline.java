@@ -3,7 +3,7 @@ package eu.pawelsz.apache.beam.coders;
 import com.google.common.collect.Lists;
 import com.google.protobuf.ByteString;
 import org.apache.beam.runners.flink.FlinkPipelineOptions;
-import org.apache.beam.runners.flink.FlinkPipelineRunner;
+import org.apache.beam.runners.flink.FlinkRunner;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.coders.ByteCoder;
 import org.apache.beam.sdk.coders.ByteStringCoder;
@@ -95,7 +95,7 @@ public class TestPipeline {
   public static void main(String[] args) {
     PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
         .as(FlinkPipelineOptions.class);
-    options.setRunner(FlinkPipelineRunner.class);
+    options.setRunner(FlinkRunner.class);
     Pipeline p = Pipeline.create(options);
     RegisterTupleCoders.run(p);
 

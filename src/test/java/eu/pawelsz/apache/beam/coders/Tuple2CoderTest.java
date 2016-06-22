@@ -1,6 +1,7 @@
 package eu.pawelsz.apache.beam.coders;
 
 import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Lists;
 import com.google.protobuf.ByteString;
 import org.apache.beam.sdk.coders.*;
 import org.apache.beam.sdk.testing.CoderProperties;
@@ -21,6 +22,7 @@ import java.util.List;
 import java.util.Map;
 
 import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.assertNotNull;
 import static junit.framework.TestCase.assertTrue;
 
 @RunWith(JUnit4.class)
@@ -65,6 +67,8 @@ public class Tuple2CoderTest {
     assertEquals(t1.hashCode(), t3.hashCode());
     assertEquals(t2.hashCode(), t4.hashCode());
 
+    assertNotNull(Tuple2Coder.of(
+        Lists.newArrayList((Coder)VarIntCoder.of(), (Coder)ByteStringCoder.of())));
   }
 
   private static final Map<Coder<?>, Iterable<?>> TEST_DATA =
