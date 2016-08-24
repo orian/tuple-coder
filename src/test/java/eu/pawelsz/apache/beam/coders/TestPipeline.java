@@ -56,7 +56,7 @@ public class TestPipeline {
     private final Aggregator<Long, Long> d2Miscount =
         createAggregator("data2 count", new Sum.SumLongFn());
 
-    @Override
+    @ProcessElement
     public void processElement(ProcessContext c) throws Exception {
       KV kv = c.element();
       Tuple2<ByteString, Long> key = c.element().getKey();
@@ -109,7 +109,7 @@ public class TestPipeline {
     KeyedPCollectionTuple.of(tag1, data1).and(tag2, data2)
         .apply(CoGroupByKey.create())
         .apply(ParDo.of(new Merge()))
-        .apply(TextIO.Write.named("write data").to("/tmp/test-out").withoutSharding());
+        .apply(TextIO.Write.to("/tmp/test-out").withoutSharding());
 
 
     p.run();
