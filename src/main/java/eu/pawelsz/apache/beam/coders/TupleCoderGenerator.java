@@ -242,14 +242,10 @@ class TupleCoderGenerator {
     w.println("");
     w.println("  @Override");
     w.println("  public void verifyDeterministic() throws NonDeterministicException {");
-    w.print("    verifyDeterministic(\"Coders must be deterministic\", ");
     for (int i = 0; i < numFields; i++) {
-      if (i > 0) {
-        w.print(", ");
-      }
-      w.print("t" + i + "Coder");
+      w.println("    verifyDeterministic(\"Coder of T" + i + " must be deterministic\", t"
+          + i + "Coder);");
     }
-    w.println(");");
     w.println("  }");
     w.println("");
     w.println("  @Override");
