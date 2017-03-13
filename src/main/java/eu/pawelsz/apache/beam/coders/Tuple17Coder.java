@@ -292,7 +292,23 @@ public class Tuple17Coder<T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12,
 
   @Override
   public void verifyDeterministic() throws NonDeterministicException {
-    verifyDeterministic("Coders must be deterministic", t0Coder, t1Coder, t2Coder, t3Coder, t4Coder, t5Coder, t6Coder, t7Coder, t8Coder, t9Coder, t10Coder, t11Coder, t12Coder, t13Coder, t14Coder, t15Coder, t16Coder);
+    verifyDeterministic("Coder of T0 must be deterministic", t0Coder);
+    verifyDeterministic("Coder of T1 must be deterministic", t1Coder);
+    verifyDeterministic("Coder of T2 must be deterministic", t2Coder);
+    verifyDeterministic("Coder of T3 must be deterministic", t3Coder);
+    verifyDeterministic("Coder of T4 must be deterministic", t4Coder);
+    verifyDeterministic("Coder of T5 must be deterministic", t5Coder);
+    verifyDeterministic("Coder of T6 must be deterministic", t6Coder);
+    verifyDeterministic("Coder of T7 must be deterministic", t7Coder);
+    verifyDeterministic("Coder of T8 must be deterministic", t8Coder);
+    verifyDeterministic("Coder of T9 must be deterministic", t9Coder);
+    verifyDeterministic("Coder of T10 must be deterministic", t10Coder);
+    verifyDeterministic("Coder of T11 must be deterministic", t11Coder);
+    verifyDeterministic("Coder of T12 must be deterministic", t12Coder);
+    verifyDeterministic("Coder of T13 must be deterministic", t13Coder);
+    verifyDeterministic("Coder of T14 must be deterministic", t14Coder);
+    verifyDeterministic("Coder of T15 must be deterministic", t15Coder);
+    verifyDeterministic("Coder of T16 must be deterministic", t16Coder);
   }
 
   @Override

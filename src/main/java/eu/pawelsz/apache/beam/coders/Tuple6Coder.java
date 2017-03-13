@@ -160,7 +160,12 @@ public class Tuple6Coder<T0, T1, T2, T3, T4, T5> extends StandardCoder<Tuple6<T0
 
   @Override
   public void verifyDeterministic() throws NonDeterministicException {
-    verifyDeterministic("Coders must be deterministic", t0Coder, t1Coder, t2Coder, t3Coder, t4Coder, t5Coder);
+    verifyDeterministic("Coder of T0 must be deterministic", t0Coder);
+    verifyDeterministic("Coder of T1 must be deterministic", t1Coder);
+    verifyDeterministic("Coder of T2 must be deterministic", t2Coder);
+    verifyDeterministic("Coder of T3 must be deterministic", t3Coder);
+    verifyDeterministic("Coder of T4 must be deterministic", t4Coder);
+    verifyDeterministic("Coder of T5 must be deterministic", t5Coder);
   }
 
   @Override

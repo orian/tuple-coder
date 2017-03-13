@@ -51,10 +51,10 @@ public class TestPipeline {
     private static final Logger LOG = LoggerFactory.getLogger(Merge.class);
 
     private final Aggregator<Long, Long> d1Miscount =
-        createAggregator("data1 count", new Sum.SumLongFn());
+            createAggregator("data1 count", Sum.ofLongs());
 
     private final Aggregator<Long, Long> d2Miscount =
-        createAggregator("data2 count", new Sum.SumLongFn());
+        createAggregator("data2 count", Sum.ofLongs());
 
     @ProcessElement
     public void processElement(ProcessContext c) throws Exception {

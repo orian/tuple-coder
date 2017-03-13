@@ -100,7 +100,7 @@ public class Tuple1Coder<T0> extends StandardCoder<Tuple1<T0>> {
 
   @Override
   public void verifyDeterministic() throws NonDeterministicException {
-    verifyDeterministic("Coders must be deterministic", t0Coder);
+    verifyDeterministic("Coder of T0 must be deterministic", t0Coder);
   }
 
   @Override
