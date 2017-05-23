@@ -1,12 +1,13 @@
 package eu.pawelsz.apache.beam.coders;
 
 import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.Lists;
 import com.google.protobuf.ByteString;
 import org.apache.beam.sdk.coders.*;
 import org.apache.beam.sdk.testing.CoderProperties;
 import org.apache.beam.sdk.util.CoderUtils;
+import org.apache.beam.sdk.values.TypeDescriptor;
 import org.apache.flink.api.java.tuple.Tuple2;
+import org.apache.beam.sdk.extensions.protobuf.ByteStringCoder;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -54,21 +55,18 @@ public class Tuple2CoderTest {
     coder.verifyDeterministic();
 
     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-    coder.encode(t1, bos, Coder.Context.OUTER);
+    coder.encode(t1, bos);
     byte[] t1enc = bos.toByteArray();
     Tuple2<ByteString, Long> t1tmp = coder.decode(
         new ByteArrayInputStream(t1enc), Coder.Context.OUTER);
     assertEquals(t1, t1tmp);
 
     bos.reset();
-    coder.encode(t3, bos, Coder.Context.OUTER);
+    coder.encode(t3, bos);
     byte[] t3enc = bos.toByteArray();
     assertTrue(Arrays.equals(t1enc, t3enc));
     assertEquals(t1.hashCode(), t3.hashCode());
     assertEquals(t2.hashCode(), t4.hashCode());
-
-    assertNotNull(Tuple2Coder.of(
-        Lists.newArrayList((Coder)VarIntCoder.of(), (Coder)ByteStringCoder.of())));
   }
 
   private static final Map<Coder<?>, Iterable<?>> TEST_DATA =
@@ -106,14 +104,13 @@ public class Tuple2CoderTest {
     }
   }
 
-  // If this changes, it implies the binary format has changed!
-  private static final String EXPECTED_ENCODING_ID = "";
-
   @Test
-  public void testEncodingId() throws Exception {
-    CoderProperties.coderHasEncodingId(
-        Tuple2Coder.of(VarIntCoder.of(), VarIntCoder.of()),
-        EXPECTED_ENCODING_ID);
+  public void testCoderRegistry() throws CannotProvideCoderException {
+    CoderRegistry reg = CoderRegistry.createDefault();
+    reg.registerCoderProvider(CoderProviders.fromStaticMethods(Tuple2.class, Tuple2Coder.class));
+    Tuple2<Long, Integer> t = Tuple2.of(1L,2);
+    reg.getCoder(new TypeDescriptor<Tuple2<Long,Integer>>() {});
+    reg.getCoder(Tuple2.class);
   }
 
   /**

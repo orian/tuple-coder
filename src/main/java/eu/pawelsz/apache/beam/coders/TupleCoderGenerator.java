@@ -104,14 +104,9 @@ class TupleCoderGenerator {
     // package and imports
     w.println("package " + PACKAGE + ';');
     w.println();
-    w.println("import com.fasterxml.jackson.annotation.JsonCreator;");
-    w.println("import com.fasterxml.jackson.annotation.JsonProperty;");
-    w.println("import com.google.common.base.Preconditions;");
     w.println("import org.apache.beam.sdk.coders.Coder;");
     w.println("import org.apache.beam.sdk.coders.CoderException;");
-    w.println("import org.apache.beam.sdk.coders.StandardCoder;");
-    w.println("import org.apache.beam.sdk.util.PropertyNames;");
-    w.println("import org.apache.beam.sdk.util.common.ElementByteSizeObserver;");
+    w.println("import org.apache.beam.sdk.coders.StructuredCoder;");
     w.println("import org.apache.flink.api.java.tuple." + tupleClass + ";");
     w.println("");
     w.println("import java.io.IOException;");
@@ -120,7 +115,7 @@ class TupleCoderGenerator {
     w.println("import java.util.Arrays;");
     w.println("import java.util.List;");
     w.println("");
-    w.println("public class " + className + "<" + types + "> extends StandardCoder<" + tupleClass
+    w.println("public class " + className + "<" + types + "> extends StructuredCoder<" + tupleClass
         + "<" + types + ">> {");
     w.println();
     w.println("");
@@ -136,29 +131,6 @@ class TupleCoderGenerator {
         w.print(", ");
       }
       w.print("t" + i);
-    }
-    w.println(");");
-    w.println("  }");
-    w.println("");
-    w.println("  @JsonCreator");
-    w.print("  public static " + className + "<");
-    for (int i = 0; i < numFields; i++) {
-      if (i > 0) {
-        w.print(", ");
-      }
-      w.print("?");
-    }
-    w.println("> of(");
-    w.println("      @JsonProperty(PropertyNames.COMPONENT_ENCODINGS)");
-    w.println("          List<Coder<?>> components) {");
-    w.println("    Preconditions.checkArgument(components.size() == " + numFields + ",");
-    w.println("        \"Expecting " + numFields + " components, got\" + components.size());");
-    w.println("    return of(");
-    for (int i = 0; i < numFields; i++) {
-      if (i > 0) {
-        w.println(",");
-      }
-      w.print("        components.get(" + i + ")");
     }
     w.println(");");
     w.println("  }");
@@ -200,23 +172,21 @@ class TupleCoderGenerator {
     w.println("  }");
     w.println("");
     w.println("  @Override");
-    w.println("  public void encode(" + tupleClass + "<" + types + "> tuple, OutputStream outputStream, Context context)");
+    w.println("  public void encode(" + tupleClass + "<" + types + "> tuple, OutputStream outStream)");
     w.println("      throws CoderException, IOException {");
     w.println("    if (tuple == null) {");
     w.println("      throw new CoderException(\"cannot encode a null " + tupleClass + "\");");
     w.println("    }");
-    w.println("    Context nestedContext = context.nested();");
     for (int i = 0; i < numFields; i++) {
-      w.println("    t" + i + "Coder.encode(tuple.f" + i + ", outputStream, nestedContext);");
+      w.println("    t" + i + "Coder.encode(tuple.f" + i + ", outStream);");
     }
     w.println("  }");
     w.println("");
     w.println("  @Override");
-    w.println("  public " + tupleClass + "<" + types + "> decode(InputStream inputStream, Context context)");
+    w.println("  public " + tupleClass + "<" + types + "> decode(InputStream inputStream)");
     w.println("      throws CoderException, IOException {");
-    w.println("    Context nestedContext = context.nested();");
     for (int i = 0; i < numFields; i++) {
-      w.println("    " + GEN_TYPE_PREFIX + i + " f" + i + " = t" + i + "Coder.decode(inputStream, nestedContext);");
+      w.println("    " + GEN_TYPE_PREFIX + i + " f" + i + " = t" + i + "Coder.decode(inputStream);");
     }
     w.print("    return " + tupleClass + ".of(");
     for (int i = 0; i < numFields; i++) {
@@ -243,8 +213,7 @@ class TupleCoderGenerator {
     w.println("  @Override");
     w.println("  public void verifyDeterministic() throws NonDeterministicException {");
     for (int i = 0; i < numFields; i++) {
-      w.println("    verifyDeterministic(\"Coder of T" + i + " must be deterministic\", t"
-          + i + "Coder);");
+      w.println("    verifyDeterministic(t"+i+"Coder, \"Coder of T" + i + " must be deterministic\");");
     }
     w.println("  }");
     w.println("");
@@ -261,7 +230,7 @@ class TupleCoderGenerator {
     w.println("  }");
     w.println("");
     w.println("  @Override");
-    w.println("  public Object structuralValue(" + tupleClass + "<" + types + "> tuple) throws Exception {");
+    w.println("  public Object structuralValue(" + tupleClass + "<" + types + "> tuple) {");
     w.println("    if (consistentWithEquals()) {");
     w.println("      return tuple;");
     w.println("    } else {");
@@ -276,30 +245,6 @@ class TupleCoderGenerator {
     w.println("    }");
     w.println("  }");
     w.println("");
-    w.println("  @Override");
-    w.println("  public boolean isRegisterByteSizeObserverCheap(" + tupleClass + "<" + types + "> tuple, Context context) {");
-    w.print("    return");
-    for (int i = 0; i < numFields; i++) {
-      if (i > 0) {
-        w.print("\n        &&");
-      }
-      w.print(" t" + i + "Coder.isRegisterByteSizeObserverCheap(tuple.f" + i + ", context.nested())");
-    }
-    w.println(";");
-    w.println("  }");
-    w.println("");
-    w.println("  @Override");
-    w.println("  public void registerByteSizeObserver(" + tupleClass + "<" + types + "> tuple,");
-    w.println("                                       ElementByteSizeObserver observer,");
-    w.println("                                       Context context) throws Exception {");
-    w.println("    if (tuple == null) {");
-    w.println("      throw new CoderException(\"cannot encode a null " + tupleClass + " \");");
-    w.println("    }");
-    w.println("    Context nestedContext = context.nested();");
-    for (int i = 0; i < numFields; i++) {
-      w.println("    t" + i + "Coder.registerByteSizeObserver(tuple.f" + i + ", observer, nestedContext);");
-    }
-    w.println("  }");
     w.println("}");
   }
 
@@ -309,6 +254,7 @@ class TupleCoderGenerator {
     w.println("package " + PACKAGE + ";");
     w.println("");
     w.println("import org.apache.beam.sdk.Pipeline;");
+    w.println("import org.apache.beam.sdk.coders.CoderProviders;");
     w.println("import org.apache.beam.sdk.coders.CoderRegistry;");
     for (int i = FIRST; i < LAST; i++) {
       w.println("import org.apache.flink.api.java.tuple.Tuple" + i + ";");
@@ -318,7 +264,7 @@ class TupleCoderGenerator {
     w.println("    public static void run(Pipeline p) {");
     w.println("        CoderRegistry cr = p.getCoderRegistry();");
     for (int i = FIRST; i < LAST; i++) {
-      w.println("        cr.registerCoder(Tuple" + i + ".class, Tuple" + i + "Coder.class);");
+      w.println("        cr.registerCoderProvider(CoderProviders.fromStaticMethods(Tuple"+i+".class, Tuple"+i+"Coder.class));");
     }
     w.println("    }");
     w.println("}");
