@@ -13,7 +13,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <flink.version>1.2.0</flink.version>
-    <beam.version>0.5.0</beam.version>
+    <beam.version>2.0.0</beam.version>
     <slf4j.version>1.7.24</slf4j.version>
   </properties>
 
@@ -45,7 +45,7 @@
       <artifactId>slf4j-log4j12</artifactId>
       <!--<artifactId>slf4j-jdk14</artifactId>-->
       <!--<artifactId>slf4j-simple</artifactId>-->
-      <version>1.7.21</version>
+      <version>${slf4j.version}</version>
       <!-- When loaded at runtime this will wire up slf4j to the JUL backend -->
       <scope>test</scope>
     </dependency>

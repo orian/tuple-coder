@@ -25,14 +25,9 @@
 
 package eu.pawelsz.apache.beam.coders;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Preconditions;
 import org.apache.beam.sdk.coders.Coder;
 import org.apache.beam.sdk.coders.CoderException;
-import org.apache.beam.sdk.coders.StandardCoder;
-import org.apache.beam.sdk.util.PropertyNames;
-import org.apache.beam.sdk.util.common.ElementByteSizeObserver;
+import org.apache.beam.sdk.coders.StructuredCoder;
 import org.apache.flink.api.java.tuple.Tuple1;
 
 import java.io.IOException;
@@ -41,22 +36,12 @@ import java.io.OutputStream;
 import java.util.Arrays;
 import java.util.List;
 
-public class Tuple1Coder<T0> extends StandardCoder<Tuple1<T0>> {
+public class Tuple1Coder<T0> extends StructuredCoder<Tuple1<T0>> {
 
 
   public static <T0> Tuple1Coder<T0> of(
       Coder<T0> t0) {
     return new Tuple1Coder<>(t0);
-  }
-
-  @JsonCreator
-  public static Tuple1Coder<?> of(
-      @JsonProperty(PropertyNames.COMPONENT_ENCODINGS)
-          List<Coder<?>> components) {
-    Preconditions.checkArgument(components.size() == 1,
-        "Expecting 1 components, got" + components.size());
-    return of(
-        components.get(0));
   }
 
   public static <T0> List<Object> getInstanceComponents(
@@ -77,20 +62,16 @@ public class Tuple1Coder<T0> extends StandardCoder<Tuple1<T0>> {
   }
 
   @Override
-  public void encode(Tuple1<T0> tuple, OutputStream outputStream, Context context)
-      throws CoderException, IOException {
+  public void encode(Tuple1<T0> tuple, OutputStream outStream) throws CoderException, IOException {
     if (tuple == null) {
       throw new CoderException("cannot encode a null Tuple1");
     }
-    Context nestedContext = context.nested();
-    t0Coder.encode(tuple.f0, outputStream, nestedContext);
+    t0Coder.encode(tuple.f0, outStream);
   }
 
   @Override
-  public Tuple1<T0> decode(InputStream inputStream, Context context)
-      throws CoderException, IOException {
-    Context nestedContext = context.nested();
-    T0 f0 = t0Coder.decode(inputStream, nestedContext);
+  public Tuple1<T0> decode(InputStream inStream) throws CoderException, IOException {
+    T0 f0 = t0Coder.decode(inStream);
     return Tuple1.of(f0);
   }
 
@@ -100,7 +81,7 @@ public class Tuple1Coder<T0> extends StandardCoder<Tuple1<T0>> {
 
   @Override
   public void verifyDeterministic() throws NonDeterministicException {
-    verifyDeterministic("Coder of T0 must be deterministic", t0Coder);
+    verifyDeterministic(t0Coder, "Coder of T0 must be deterministic");
   }
 
   @Override
@@ -109,28 +90,12 @@ public class Tuple1Coder<T0> extends StandardCoder<Tuple1<T0>> {
   }
 
   @Override
-  public Object structuralValue(Tuple1<T0> tuple) throws Exception {
+  public Object structuralValue(Tuple1<T0> tuple) {
     if (consistentWithEquals()) {
       return tuple;
     } else {
       return Tuple1.of(
         t0Coder.structuralValue(tuple.f0));
     }
-  }
-
-  @Override
-  public boolean isRegisterByteSizeObserverCheap(Tuple1<T0> tuple, Context context) {
-    return t0Coder.isRegisterByteSizeObserverCheap(tuple.f0, context.nested());
-  }
-
-  @Override
-  public void registerByteSizeObserver(Tuple1<T0> tuple,
-                                       ElementByteSizeObserver observer,
-                                       Context context) throws Exception {
-    if (tuple == null) {
-      throw new CoderException("cannot encode a null Tuple1 ");
-    }
-    Context nestedContext = context.nested();
-    t0Coder.registerByteSizeObserver(tuple.f0, observer, nestedContext);
   }
 }
