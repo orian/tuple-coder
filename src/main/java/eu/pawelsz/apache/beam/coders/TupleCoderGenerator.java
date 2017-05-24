@@ -40,7 +40,7 @@ class TupleCoderGenerator {
   // min. and max. tuple arity
   private static final int FIRST = 1;
 
-  private static final int LAST = 25;
+  private static final int LAST = 3;
 
 
   public static void main(String[] args) throws Exception {

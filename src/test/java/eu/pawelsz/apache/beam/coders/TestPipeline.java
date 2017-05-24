@@ -112,22 +112,43 @@ public class TestPipeline {
     Pipeline p = Pipeline.create(options);
     RegisterTupleCoders.run(p);
 
-    PCollection<Tuple1<ByteString>> data4 = p.apply(Create.of(Generate3(100)));
+    PCollection<Tuple1<ByteString>> data4 = p.apply(Create.of(Generate3(100))
+            .withCoder(
+                    Tuple1Coder.of(ByteStringCoder.of())
+            ));
+
+    data4.apply(MapElements.via(new SimpleFunction<Tuple1<ByteString>, Tuple2<Long,Long>>() {
+      @Override
+      public Tuple2<Long, Long> apply(Tuple1<ByteString> input) {
+        return Tuple2.of(1L, 2L);
+      }
+    }))
+            .apply(MapElements.via(new SimpleFunction<Tuple2<Long, Long>, String>() {
+              @Override
+              public String apply(Tuple2<Long, Long> input) {
+                return "1";
+              }
+            }))
+            .apply(TextIO.write().to("/tmp/test-out-1").withoutSharding());
+
+    KvCoder<Tuple2<ByteString, Long>, Long> coder = KvCoder.of(
+            Tuple2Coder.of(ByteStringCoder.of(), VarLongCoder.of()),
+            VarLongCoder.of());
 
     PCollection<KV<Tuple2<ByteString, Long>, Long>> data1 = p.apply(
             Create.of(Generate(5, 5, 1, 1L))
-        .withCoder(
-            KvCoder.of(
-                Tuple2Coder.of(ByteStringCoder.of(), VarLongCoder.of()),
-                VarLongCoder.of())));
+        .withCoder(coder));
 
     PCollection<KV<Tuple2<ByteString, Long>, Long>> data2 = p.apply(
-            Create.of(Generate(5, 5, 1000, 2)));
-//
-//    KeyedPCollectionTuple.of(tag1, data1).and(tag2, data2)
-//        .apply(CoGroupByKey.create())
-//        .apply(ParDo.of(new Merge()))
-//        .apply(TextIO.write().to("/tmp/test-out").withoutSharding());
+            Create.of(Generate(5, 5, 1000, 2)).withCoder(coder)
+    );
+
+    data2 = data2.apply(Sum.longsPerKey());
+
+    KeyedPCollectionTuple.of(tag1, data1).and(tag2, data2)
+        .apply(CoGroupByKey.create())
+        .apply(ParDo.of(new Merge()))
+        .apply(TextIO.write().to("/tmp/test-out").withoutSharding());
 
     p.run();
   }

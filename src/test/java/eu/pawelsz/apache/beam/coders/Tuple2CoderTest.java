@@ -5,7 +5,9 @@ import com.google.protobuf.ByteString;
 import org.apache.beam.sdk.coders.*;
 import org.apache.beam.sdk.testing.CoderProperties;
 import org.apache.beam.sdk.util.CoderUtils;
+import org.apache.beam.sdk.values.KV;
 import org.apache.beam.sdk.values.TypeDescriptor;
+import org.apache.flink.api.java.tuple.Tuple1;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.beam.sdk.extensions.protobuf.ByteStringCoder;
 import org.junit.Rule;
@@ -110,7 +112,14 @@ public class Tuple2CoderTest {
     reg.registerCoderProvider(CoderProviders.fromStaticMethods(Tuple2.class, Tuple2Coder.class));
     Tuple2<Long, Integer> t = Tuple2.of(1L,2);
     reg.getCoder(new TypeDescriptor<Tuple2<Long,Integer>>() {});
-    reg.getCoder(Tuple2.class);
+  }
+
+  @Test
+  public void testCoder2Registry() throws CannotProvideCoderException {
+    CoderRegistry reg = CoderRegistry.createDefault();
+    reg.registerCoderProvider(CoderProviders.fromStaticMethods(Tuple1.class, Tuple1Coder.class));
+    Tuple1<Long> t = Tuple1.of(1L);
+    reg.getCoder(new TypeDescriptor<Tuple1<Long>>() {});
   }
 
   /**
