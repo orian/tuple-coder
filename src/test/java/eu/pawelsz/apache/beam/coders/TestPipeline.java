@@ -33,123 +33,123 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class TestPipeline {
-  public static Iterable<KV<Tuple2<ByteString, Long>, Long>> Generate(int k1, int k2, int perKey, long val) {
-    LinkedList<KV<Tuple2<ByteString, Long>, Long>> ll = new LinkedList<>();
-    ArrayList<ByteString> bs = new ArrayList<>(k1);
-    for (int i = 0; i < k1; i++) {
-      bs.add(ByteString.copyFromUtf8("some long ID:" + i));
-    }
-    long s = 1463184000000000L;
-    for (int h = 0; h < perKey; h++) {
-      for (int i = 0; i < k1; i++) {
-        for (long j = 0; j < k2; j++) {
-          ll.add(KV.of(Tuple2.of(bs.get(i), s+j), val));
+    public static Iterable<KV<Tuple2<ByteString, Long>, Long>> Generate(int k1, int k2, int perKey, long val) {
+        LinkedList<KV<Tuple2<ByteString, Long>, Long>> ll = new LinkedList<>();
+        ArrayList<ByteString> bs = new ArrayList<>(k1);
+        for (int i = 0; i < k1; i++) {
+            bs.add(ByteString.copyFromUtf8("some long ID:" + i));
         }
-      }
+        long s = 1463184000000000L;
+        for (int h = 0; h < perKey; h++) {
+            for (int i = 0; i < k1; i++) {
+                for (long j = 0; j < k2; j++) {
+                    ll.add(KV.of(Tuple2.of(bs.get(i), s + j), val));
+                }
+            }
+        }
+        return ll;
     }
-    return ll;
-  }
 
-  public static Iterable<Tuple1<ByteString>> Generate3(int k1) {
-    LinkedList<Tuple1<ByteString>> ll = new LinkedList<>();
-    ArrayList<ByteString> bs = new ArrayList<>(k1);
-    for (int i = 0; i < k1; i++) {
-      ll.add(Tuple1.of(ByteString.copyFromUtf8("some long ID:" + i)));
+    public static Iterable<Tuple1<ByteString>> Generate3(int k1) {
+        LinkedList<Tuple1<ByteString>> ll = new LinkedList<>();
+        ArrayList<ByteString> bs = new ArrayList<>(k1);
+        for (int i = 0; i < k1; i++) {
+            ll.add(Tuple1.of(ByteString.copyFromUtf8("some long ID:" + i)));
+        }
+        return ll;
     }
-    return ll;
-  }
 
-  public static class Merge extends DoFn<KV<Tuple2<ByteString, Long>, CoGbkResult>, String> {
+    public static class Merge extends DoFn<KV<Tuple2<ByteString, Long>, CoGbkResult>, String> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(Merge.class);
+        private static final Logger LOG = LoggerFactory.getLogger(Merge.class);
 
-    private final Counter d1Miscount =
-            Metrics.counter("D1", "data1 count");
+        private final Counter d1Miscount =
+                Metrics.counter("D1", "data1 count");
 
-    private final Counter d2Miscount =
-        Metrics.counter("D2", "data2 count");
+        private final Counter d2Miscount =
+                Metrics.counter("D2", "data2 count");
 
-    @ProcessElement
-    public void processElement(ProcessContext c) throws Exception {
-      KV kv = c.element();
-      Tuple2<ByteString, Long> key = c.element().getKey();
-      CoGbkResult res = c.element().getValue();
-      Iterable<Long> d1 = res.getAll(tag1);
-      Iterable<Long> d2 = res.getAll(tag2);
-      List<Long> locs = Lists.newLinkedList(d1);
-      if (locs.size() > 1) {
-        d1Miscount.inc();
-      }
-      int locId;
-      if (locs.size() < 1) {
-        d1Miscount.inc();
-      }
+        @ProcessElement
+        public void processElement(ProcessContext c) throws Exception {
+            KV kv = c.element();
+            Tuple2<ByteString, Long> key = c.element().getKey();
+            CoGbkResult res = c.element().getValue();
+            Iterable<Long> d1 = res.getAll(tag1);
+            Iterable<Long> d2 = res.getAll(tag2);
+            List<Long> locs = Lists.newLinkedList(d1);
+            if (locs.size() > 1) {
+                d1Miscount.inc();
+            }
+            int locId;
+            if (locs.size() < 1) {
+                d1Miscount.inc();
+            }
 
-      long count = 0;
-      for (Long ri : d2) {
-        count++;
-      }
-      c.output(key.f0.toStringUtf8() + "," + key.f1 + "," + count);
+            long count = 0;
+            for (Long ri : d2) {
+                count++;
+            }
+            c.output(key.f0.toStringUtf8() + "," + key.f1 + "," + count);
 //      itemCount.addValue(count);
-      if (count == 0) {
-        LOG.info("no pings for " + key.f0.toStringUtf8() + " on: " + key.f1);
+            if (count == 0) {
+                LOG.info("no pings for " + key.f0.toStringUtf8() + " on: " + key.f1);
 //      } else if (locId==noLocation) {
 //        LOG.info(count+" pings for " + key.f0.toStringUtf8() + " on: " + key.f1 + " marked as no-loc");
-        d2Miscount.inc();
-      } else {
-        LOG.info(count + " pings for " + key.f0.toStringUtf8() + " on: " + key.f1);
-      }
+                d2Miscount.inc();
+            } else {
+                LOG.info(count + " pings for " + key.f0.toStringUtf8() + " on: " + key.f1);
+            }
+        }
     }
-  }
 
-  private static final TupleTag<Long> tag1 = new TupleTag<>();
-  private static final TupleTag<Long> tag2 = new TupleTag<>();
+    private static final TupleTag<Long> tag1 = new TupleTag<>();
+    private static final TupleTag<Long> tag2 = new TupleTag<>();
 
-  public static void main(String[] args) throws CannotProvideCoderException {
-    PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
-        .as(FlinkPipelineOptions.class);
-    options.setRunner(FlinkRunner.class);
-    Pipeline p = Pipeline.create(options);
-    RegisterTupleCoders.run(p);
+    public static void main(String[] args) throws CannotProvideCoderException {
+        PipelineOptions options = PipelineOptionsFactory.fromArgs(args).withValidation()
+                .as(FlinkPipelineOptions.class);
+        options.setRunner(FlinkRunner.class);
+        Pipeline p = Pipeline.create(options);
+        RegisterTupleCoders.run(p);
 
-    PCollection<Tuple1<ByteString>> data4 = p.apply(Create.of(Generate3(100))
-            .withCoder(
-                    Tuple1Coder.of(ByteStringCoder.of())
-            ));
+        PCollection<Tuple1<ByteString>> data4 = p.apply(Create.of(Generate3(100))
+                .withCoder(
+                        Tuple1Coder.of(ByteStringCoder.of())
+                ));
 
-    data4.apply(MapElements.via(new SimpleFunction<Tuple1<ByteString>, Tuple2<Long,Long>>() {
-      @Override
-      public Tuple2<Long, Long> apply(Tuple1<ByteString> input) {
-        return Tuple2.of(1L, 2L);
-      }
-    }))
-            .apply(MapElements.via(new SimpleFunction<Tuple2<Long, Long>, String>() {
-              @Override
-              public String apply(Tuple2<Long, Long> input) {
-                return "1";
-              }
-            }))
-            .apply(TextIO.write().to("/tmp/test-out-1").withoutSharding());
+        data4.apply(MapElements.via(new SimpleFunction<Tuple1<ByteString>, Tuple2<Long, Long>>() {
+            @Override
+            public Tuple2<Long, Long> apply(Tuple1<ByteString> input) {
+                return Tuple2.of(1L, 2L);
+            }
+        }))
+                .apply(MapElements.via(new SimpleFunction<Tuple2<Long, Long>, String>() {
+                    @Override
+                    public String apply(Tuple2<Long, Long> input) {
+                        return "1";
+                    }
+                }))
+                .apply(TextIO.write().to("/tmp/test-out-1").withoutSharding());
 
-    KvCoder<Tuple2<ByteString, Long>, Long> coder = KvCoder.of(
-            Tuple2Coder.of(ByteStringCoder.of(), VarLongCoder.of()),
-            VarLongCoder.of());
+        KvCoder<Tuple2<ByteString, Long>, Long> coder = KvCoder.of(
+                Tuple2Coder.of(ByteStringCoder.of(), VarLongCoder.of()),
+                VarLongCoder.of());
 
-    PCollection<KV<Tuple2<ByteString, Long>, Long>> data1 = p.apply(
-            Create.of(Generate(5, 5, 1, 1L))
-        .withCoder(coder));
+        PCollection<KV<Tuple2<ByteString, Long>, Long>> data1 = p.apply(
+                Create.of(Generate(5, 5, 1, 1L))
+                        .withCoder(coder));
 
-    PCollection<KV<Tuple2<ByteString, Long>, Long>> data2 = p.apply(
-            Create.of(Generate(5, 5, 1000, 2)).withCoder(coder)
-    );
+        PCollection<KV<Tuple2<ByteString, Long>, Long>> data2 = p.apply(
+                Create.of(Generate(5, 5, 1000, 2)).withCoder(coder)
+        );
 
-    data2 = data2.apply(Sum.longsPerKey());
+        data2 = data2.apply(Sum.longsPerKey());
 
-    KeyedPCollectionTuple.of(tag1, data1).and(tag2, data2)
-        .apply(CoGroupByKey.create())
-        .apply(ParDo.of(new Merge()))
-        .apply(TextIO.write().to("/tmp/test-out").withoutSharding());
+        KeyedPCollectionTuple.of(tag1, data1).and(tag2, data2)
+                .apply(CoGroupByKey.create())
+                .apply(ParDo.of(new Merge()))
+                .apply(TextIO.write().to("/tmp/test-out").withoutSharding());
 
-    p.run();
-  }
+        p.run();
+    }
 }

@@ -118,35 +118,26 @@ public class Tuple2Coder<T0, T1> extends StructuredCoder<Tuple2<T0, T1>> {
     }
   }
 
-  /**
-   * Returns whether both keyCoder and valueCoder are considered not expensive.
-   */
   @Override
-  public boolean isRegisterByteSizeObserverCheap(Tuple2<T0, T1> t) {
-    return t0Coder.isRegisterByteSizeObserverCheap(t.f0)
-            && t1Coder.isRegisterByteSizeObserverCheap(t.f1);
+  public boolean isRegisterByteSizeObserverCheap(Tuple2<T0, T1> tuple) {
+    return t0Coder.isRegisterByteSizeObserverCheap(tuple.f0)
+        && t1Coder.isRegisterByteSizeObserverCheap(tuple.f1);
   }
 
-  /**
-   * Notifies ElementByteSizeObserver about the byte size of the
-   * encoded value using this coder.
-   */
   @Override
-  public void registerByteSizeObserver(
-          Tuple2<T0, T1> t, ElementByteSizeObserver observer)
-          throws Exception {
-    if (t == null) {
-      throw new CoderException("cannot encode a null Tuple2");
+  public void registerByteSizeObserver(Tuple2<T0, T1> tuple,
+                                       ElementByteSizeObserver observer) throws Exception {
+    if (tuple == null) {
+      throw new CoderException("cannot encode a null Tuple2 ");
     }
-    t0Coder.registerByteSizeObserver(t.f0, observer);
-    t1Coder.registerByteSizeObserver(t.f1, observer);
+    t0Coder.registerByteSizeObserver(tuple.f0, observer);
+    t1Coder.registerByteSizeObserver(tuple.f1, observer);
   }
 
   @Override
   public TypeDescriptor<Tuple2<T0, T1>> getEncodedTypeDescriptor() {
-    return new TypeDescriptor<Tuple2<T0, T1>>() {}.where(
-            new TypeParameter<T0>() {}, t0Coder.getEncodedTypeDescriptor())
-            .where(new TypeParameter<T1>() {}, t1Coder.getEncodedTypeDescriptor());
+    return new TypeDescriptor<Tuple2<T0, T1>>() {}
+      .where(new TypeParameter<T0>() {}, t0Coder.getEncodedTypeDescriptor())
+      .where(new TypeParameter<T1>() {}, t1Coder.getEncodedTypeDescriptor());
   }
-
 }

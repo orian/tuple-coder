@@ -40,7 +40,7 @@ class TupleCoderGenerator {
   // min. and max. tuple arity
   private static final int FIRST = 1;
 
-  private static final int LAST = 3;
+  private static final int LAST = 25;
 
 
   public static void main(String[] args) throws Exception {
@@ -107,6 +107,9 @@ class TupleCoderGenerator {
     w.println("import org.apache.beam.sdk.coders.Coder;");
     w.println("import org.apache.beam.sdk.coders.CoderException;");
     w.println("import org.apache.beam.sdk.coders.StructuredCoder;");
+    w.println("import org.apache.beam.sdk.util.common.ElementByteSizeObserver;");
+    w.println("import org.apache.beam.sdk.values.TypeDescriptor;");
+    w.println("import org.apache.beam.sdk.values.TypeParameter;");
     w.println("import org.apache.flink.api.java.tuple." + tupleClass + ";");
     w.println("");
     w.println("import java.io.IOException;");
@@ -245,6 +248,43 @@ class TupleCoderGenerator {
     w.println("    }");
     w.println("  }");
     w.println("");
+
+    w.println("  @Override");
+    w.println("  public boolean isRegisterByteSizeObserverCheap(" + tupleClass + "<" + types + "> tuple) {");
+    w.print("    return");
+    for (int i = 0; i < numFields; i++) {
+      if (i > 0) {
+        w.print("\n        &&");
+      }
+      w.print(" t" + i + "Coder.isRegisterByteSizeObserverCheap(tuple.f" + i + ")");
+    }
+    w.println(";");
+    w.println("  }");
+
+    w.println("");
+    w.println("  @Override");
+    w.println("  public void registerByteSizeObserver(" + tupleClass + "<" + types + "> tuple,");
+    w.println("                                       ElementByteSizeObserver observer) throws Exception {");
+    w.println("    if (tuple == null) {");
+    w.println("      throw new CoderException(\"cannot encode a null " + tupleClass + " \");");
+    w.println("    }");
+    for (int i = 0; i < numFields; i++) {
+      w.println("    t" + i + "Coder.registerByteSizeObserver(tuple.f" + i + ", observer);");
+    }
+    w.println("  }");
+
+    String typeDescriptor = "TypeDescriptor<"+tupleClass+"<"+types+">>";
+    w.println("");
+    w.println("  @Override");
+    w.println("  public "+typeDescriptor+" getEncodedTypeDescriptor() {");
+    w.println("    return new "+typeDescriptor+"() {}");
+    for (int i = 0; i < numFields; i++) {
+      if (i>0) w.println("");
+      w.print("      .where(new TypeParameter<T"+i+">() {}, t"+i+"Coder.getEncodedTypeDescriptor())");
+    }
+    w.println(";");
+    w.println("  }");
+
     w.println("}");
   }
 

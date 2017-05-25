@@ -67,28 +67,16 @@ public class Tuple1Coder<T0> extends StructuredCoder<Tuple1<T0>> {
   @Override
   public void encode(Tuple1<T0> tuple, OutputStream outStream)
       throws CoderException, IOException {
-    t0Coder.encode(tuple.f0, outStream, Context.NESTED);
-  }
-
-  @Override
-  public void encode(Tuple1<T0> tuple, OutputStream outStream, Context context)
-          throws CoderException, IOException {
     if (tuple == null) {
       throw new CoderException("cannot encode a null Tuple1");
     }
-    t0Coder.encode(tuple.f0, outStream, context);
+    t0Coder.encode(tuple.f0, outStream);
   }
 
   @Override
   public Tuple1<T0> decode(InputStream inputStream)
       throws CoderException, IOException {
-    return decode(inputStream, Context.NESTED);
-  }
-
-  @Override
-  public Tuple1<T0> decode(InputStream inputStream, Context context)
-          throws CoderException, IOException {
-    T0 f0 = t0Coder.decode(inputStream, context);
+    T0 f0 = t0Coder.decode(inputStream);
     return Tuple1.of(f0);
   }
 
@@ -116,32 +104,23 @@ public class Tuple1Coder<T0> extends StructuredCoder<Tuple1<T0>> {
     }
   }
 
-  /**
-   * Returns whether both keyCoder and valueCoder are considered not expensive.
-   */
   @Override
-  public boolean isRegisterByteSizeObserverCheap(Tuple1<T0> t) {
-    return t0Coder.isRegisterByteSizeObserverCheap(t.f0);
+  public boolean isRegisterByteSizeObserverCheap(Tuple1<T0> tuple) {
+    return t0Coder.isRegisterByteSizeObserverCheap(tuple.f0);
   }
 
-  /**
-   * Notifies ElementByteSizeObserver about the byte size of the
-   * encoded value using this coder.
-   */
   @Override
-  public void registerByteSizeObserver(
-          Tuple1<T0> t, ElementByteSizeObserver observer)
-          throws Exception {
-    if (t == null) {
-      throw new CoderException("cannot encode a null Tuple2");
+  public void registerByteSizeObserver(Tuple1<T0> tuple,
+                                       ElementByteSizeObserver observer) throws Exception {
+    if (tuple == null) {
+      throw new CoderException("cannot encode a null Tuple1 ");
     }
-    t0Coder.registerByteSizeObserver(t.f0, observer);
+    t0Coder.registerByteSizeObserver(tuple.f0, observer);
   }
 
   @Override
   public TypeDescriptor<Tuple1<T0>> getEncodedTypeDescriptor() {
-    return new TypeDescriptor<Tuple1<T0>>() {}.where(
-            new TypeParameter<T0>() {}, t0Coder.getEncodedTypeDescriptor());
+    return new TypeDescriptor<Tuple1<T0>>() {}
+      .where(new TypeParameter<T0>() {}, t0Coder.getEncodedTypeDescriptor());
   }
-
 }
